@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="theme-color" content="white">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">	  
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+<link rel="shortcut icon" type="image/png" href="https://gallery.mailchimp.com/29f3009acb8c7b09438efab41/images/21b431c0-7317-4341-972e-4cf7b44572db.png">
+
+    <meta property="og:title" content="I Am Aafreen">
+    <meta property="og:url" content="https://iamaafreen.github.io/hello/">
+    <meta property="og:description" content="The gorgeous me!">
+    <meta property="og:image" content="https://gallery.mailchimp.com/29f3009acb8c7b09438efab41/images/b5d389a8-58d6-4b60-8bbc-81212d433c80.png">
+    <meta property="og:type" content="article">
+
+	  
+ <link rel="manifest" href="manifest.json">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Aafreen">
+  <link rel="apple-touch-icon" href="apple-icon-57x57.png" sizes="57x57">
+  <link rel="apple-touch-icon" href="apple-icon-60x60.png" sizes="60x60">
+  <link rel="apple-touch-icon" href="apple-icon-72x72.png" sizes="72x72">
+  <link rel="apple-touch-icon" href="apple-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="apple-icon-114x114.png" sizes="114x114">
+  <link rel="apple-touch-icon" href="apple-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="apple-icon-144x144.png" sizes="144x144">
+  <link rel="apple-touch-icon" href="apple-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="apple-icon-180x180.png" sizes="180x180">
+  <meta name="msapplication-TileImage" content=".png">
+  <meta name="msapplication-TileColor" content="#1C9556">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">	  
+	  
+    <script src="index.js" defer></script>
+
+    <title>Aafreen</title>
+
+    <style type="text/css">
+
+
+
+
+:root {
+  --ship-size: 10vmin;
+  --sky-color: #1C1740;
+  --ship-color: #F9E2FE;
+  --ship-cap-color: crimson;
+  --ship-wing-color: #4C3198;
+  --ship-window-trim-color: #4C3198;
+  --ship-booster-color: #C38382;
+  --stars-sm-speed: 5s;
+  --stars-md-speed: 2s;
+  --stars-lg-speed: 1s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100% ;
+
+}
+
+body {
+
+/*  overflow: hidden;*/
+  background-color: var(--sky-color);
+    font-family: lato;
+  font-size: 14px;
+}
+
+.ship,
+.star-field {
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+
+
+/*  position: absolute;
+  top: 50%;
+  left: 50%;*/
+/*  will-change: transform;*/
+/*  transition: transform 0.4s ease;*/
+  transform: translate(-50%, -50%);
+}
+
+.star-field {
+  width: 200%;
+  height: 200%;
+/*  transition: transform 1s ease-out;*/
+}
+
+
+
+.ship .wrapper {
+  display: flex;
+}
+
+.ship .body {
+  position: relative;
+  background-color: var(--ship-color);
+  border-radius: 0 0 50% 50% / 76% 76% 15% 15%;
+}
+.ship .body:before {
+  content: '';
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 76% 76% 25% 25%;
+}
+
+.ship .main {
+  width: var(--ship-size);
+  height: calc(var(--ship-size) * 1.5);
+  box-shadow: inset rgba(0, 0, 0, 0.15) -0.5vmin 0 2vmin 0;
+}
+.ship .main:before {
+  bottom: 80%;
+  width: 100%;
+  height: 75%;
+  background-color: inherit;
+  box-shadow: inset rgba(0, 0, 0, 0.15) -0.5vmin 1vmin 1vmin 0;
+}
+.ship .main:after {
+  content: '';
+  position: absolute;
+  bottom: 75%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: calc(var(--ship-size) / 15) solid var(--ship-window-trim-color);
+  width: calc(var(--ship-size) / 1.8);
+  height: calc(var(--ship-size) / 1.8);
+  box-shadow: inset rgba(0, 0, 0, 0.075) -2vmin -2vmin 0 0, inset rgba(0, 0, 0, 0.1) -1vmin -1.5vmin 0 0;
+  border-radius: 100%;
+}
+
+.ship .side {
+  width: calc(var(--ship-size) / 3);
+  height: var(--ship-size);
+  box-shadow: inset rgba(0, 0, 0, 0.1) -0.5vmin 0 1vmin 0, inset rgba(0, 0, 0, 0.1) 0.5vmin 0 1vmin 0;
+}
+.ship .side:before {
+  bottom: 90%;
+  width: 100%;
+  height: 35%;
+  background-color: var(--ship-cap-color);
+  box-shadow: inset rgba(0, 0, 0, 0.2) -0.5vmin 1vmin 1vmin 0, inset rgba(255, 255, 255, 0.2) 0.5vmin 1vmin 1vmin 0;
+}
+.ship .side.left {
+  left: 1px;
+}
+.ship .side.right {
+  right: 1px;
+}
+
+.ship .wing {
+  position: absolute;
+  bottom: 2vmin;
+  background-color: var(--ship-wing-color);
+  width: calc(var(--ship-size) / 2);
+  height: calc(var(--ship-size) / 1.5);
+  z-index: 1;
+  box-shadow: inset rgba(0, 0, 0, 0.1) -0.5vmin 1vmin 1vmin 0, inset rgba(255, 255, 255, 0.1) 0.5vmin 1vmin 1vmin 0;
+}
+.ship .wing.left {
+  right: 100%;
+  border-radius: 100% 0 10% 10%;
+}
+.ship .wing.right {
+  left: 100%;
+  border-radius: 0 100% 10% 10%;
+}
+
+.ship .booster {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: calc(var(--ship-size) / 1.2);
+  height: calc(var(--ship-size) / 2.5);
+  background-color: var(--ship-booster-color);
+  border-radius: 0 0 50% 50% / 76% 76% 35% 35%;
+  z-index: -1;
+  box-shadow: inset rgba(0, 0, 0, 0.3) -0.5vmin 1vmin 1vmin 0, inset rgba(255, 255, 255, 0.3) 0.5vmin 1vmin 1vmin 0, black 0 0 2vmin;
+}
+
+.ship .exhaust {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: calc(var(--ship-size) / 1.4);
+  height: 80%;
+  border-radius: 0 0 100% 100%;
+  background-image: linear-gradient(to bottom, yellow, transparent 70%);
+  z-index: -2;
+  transform-origin: 50% 0;
+  animation: exhaust 0.1s linear alternate infinite;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.stars:before, .stars:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  transform: translateY(-100vh);
+}
+.stars-sm {
+  width: 1px;
+  height: 1px;
+}
+.stars-sm:before, .stars-sm:after {
+  box-shadow: 111vw 56vh white, 44vw 87vh white, 195vw 129vh white, 27vw 174vh white, 103vw 127vh white, 43vw 33vh white, 147vw 137vh white, 79vw 83vh white, 197vw 185vh white, 7vw 172vh white, 3vw 47vh white, 158vw 179vh white, 3vw 157vh white, 156vw 48vh white, 69vw 142vh white, 121vw 127vh white, 63vw 90vh white, 162vw 65vh white, 26vw 179vh white, 94vw 148vh white, 5vw 47vh white, 192vw 44vh white, 34vw 193vh white, 69vw 6vh white, 50vw 3vh white, 31vw 96vh white, 168vw 57vh white, 6vw 38vh white, 15vw 173vh white, 7vw 53vh white, 140vw 8vh white, 58vw 45vh white, 163vw 158vh white, 54vw 45vh white, 184vw 181vh white, 186vw 29vh white, 21vw 143vh white, 179vw 172vh white, 2vw 81vh white, 114vw 25vh white, 136vw 7vh white, 83vw 119vh white, 32vw 74vh white, 171vw 16vh white, 107vw 97vh white, 200vw 15vh white, 47vw 121vh white, 68vw 108vh white, 79vw 178vh white, 127vw 121vh white, 92vw 129vh white, 170vw 194vh white, 22vw 54vh white, 135vw 52vh white, 50vw 1vh white, 178vw 63vh white, 62vw 86vh white, 167vw 121vh white, 189vw 180vh white, 97vw 190vh white, 37vw 153vh white, 96vw 35vh white, 108vw 88vh white, 121vw 133vh white, 76vw 97vh white, 167vw 119vh white, 177vw 45vh white, 9vw 17vh white, 87vw 72vh white, 86vw 43vh white, 71vw 55vh white, 32vw 190vh white, 56vw 36vh white, 103vw 150vh white, 41vw 60vh white, 45vw 6vh white, 194vw 199vh white, 57vw 138vh white, 138vw 178vh white, 189vw 152vh white, 128vw 122vh white, 169vw 79vh white, 115vw 155vh white, 167vw 195vh white, 141vw 18vh white, 105vw 43vh white, 87vw 45vh white, 165vw 74vh white, 47vw 72vh white, 61vw 117vh white, 129vw 155vh white, 64vw 137vh white, 87vw 33vh white, 98vw 120vh white, 88vw 55vh white, 107vw 133vh white, 17vw 114vh white, 162vw 97vh white, 160vw 107vh white, 73vw 23vh white, 3vw 132vh white, 45vw 147vh white, 17vw 89vh white, 28vw 113vh white, 182vw 162vh white, 200vw 34vh white, 30vw 128vh white, 30vw 134vh white, 122vw 186vh white, 158vw 110vh white, 62vw 146vh white, 138vw 149vh white, 196vw 161vh white, 162vw 107vh white, 82vw 119vh white, 44vw 15vh white, 67vw 120vh white, 30vw 46vh white, 124vw 165vh white, 157vw 82vh white, 29vw 85vh white, 59vw 131vh white, 10vw 6vh white, 19vw 13vh white, 197vw 15vh white, 165vw 179vh white, 135vw 95vh white, 118vw 178vh white, 80vw 33vh white, 65vw 101vh white, 104vw 163vh white, 82vw 83vh white, 155vw 164vh white, 113vw 95vh white, 93vw 72vh white, 34vw 107vh white, 7vw 116vh white, 58vw 152vh white, 22vw 39vh white, 129vw 174vh white, 51vw 198vh white, 171vw 104vh white, 172vw 6vh white, 131vw 123vh white, 1vw 171vh white, 198vw 42vh white, 32vw 193vh white, 66vw 20vh white, 181vw 110vh white, 185vw 196vh white, 97vw 194vh white, 56vw 27vh white, 71vw 86vh white, 79vw 75vh white, 149vw 38vh white, 39vw 68vh white, 126vw 23vh white, 156vw 192vh white, 62vw 79vh white, 123vw 82vh white, 48vw 135vh white, 9vw 136vh white, 10vw 142vh white, 93vw 101vh white, 174vw 58vh white, 65vw 162vh white, 18vw 140vh white, 150vw 184vh white, 197vw 47vh white, 198vw 131vh white, 22vw 44vh white, 128vw 112vh white, 188vw 113vh white, 58vw 159vh white, 60vw 84vh white, 39vw 167vh white, 129vw 133vh white, 77vw 17vh white, 60vw 155vh white, 186vw 135vh white, 5vw 70vh white, 99vw 35vh white, 28vw 190vh white, 23vw 126vh white, 162vw 45vh white, 44vw 38vh white, 153vw 9vh white, 1vw 55vh white, 45vw 8vh white, 34vw 71vh white, 146vw 145vh white, 26vw 133vh white, 155vw 118vh white, 93vw 134vh white, 42vw 40vh white, 171vw 157vh white, 77vw 42vh white, 43vw 107vh white, 3vw 48vh white, 118vw 131vh white, 117vw 147vh white, 182vw 163vh white, 72vw 158vh white, 180vw 99vh white, 82vw 184vh white, 6vw 128vh white, 109vw 49vh white, 98vw 164vh white, 8vw 60vh white, 147vw 111vh white, 184vw 113vh white, 147vw 148vh white, 193vw 23vh white, 181vw 185vh white, 195vw 115vh white, 163vw 180vh white, 40vw 25vh white, 132vw 198vh white, 178vw 173vh white, 180vw 200vh white, 73vw 96vh white, 103vw 146vh white, 117vw 165vh white, 56vw 14vh white, 189vw 150vh white, 139vw 186vh white, 73vw 20vh white, 93vw 150vh white, 8vw 46vh white, 96vw 109vh white, 26vw 193vh white, 109vw 86vh white, 195vw 90vh white, 136vw 194vh white, 113vw 178vh white, 185vw 53vh white, 8vw 27vh white, 107vw 11vh white, 102vw 146vh white, 11vw 140vh white, 53vw 70vh white, 129vw 50vh white, 177vw 77vh white, 1vw 135vh white, 31vw 174vh white, 174vw 82vh white, 181vw 198vh white, 29vw 47vh white, 42vw 197vh white, 179vw 70vh white, 52vw 167vh white, 141vw 58vh white, 47vw 64vh white, 57vw 8vh white, 143vw 145vh white, 47vw 41vh white, 14vw 114vh white, 63vw 1vh white, 156vw 134vh white, 109vw 87vh white, 86vw 134vh white, 47vw 183vh white, 25vw 20vh white, 79vw 89vh white, 2vw 31vh white, 79vw 107vh white, 174vw 3vh white, 119vw 50vh white, 59vw 168vh white, 176vw 68vh white, 83vw 110vh white, 153vw 14vh white, 119vw 155vh white, 44vw 125vh white, 63vw 102vh white, 34vw 64vh white, 98vw 6vh white, 95vw 53vh white, 107vw 43vh white, 16vw 200vh white, 7vw 147vh white, 198vw 77vh white, 105vw 69vh white, 196vw 66vh white, 84vw 2vh white, 106vw 108vh white, 180vw 30vh white, 87vw 129vh white, 87vw 91vh white, 46vw 59vh white, 158vw 118vh white, 139vw 191vh white, 166vw 111vh white, 99vw 106vh white, 36vw 96vh white, 39vw 188vh white, 42vw 167vh white, 81vw 18vh white, 121vw 149vh white, 28vw 142vh white, 78vw 83vh white, 146vw 167vh white, 117vw 80vh white, 139vw 5vh white, 83vw 135vh white, 186vw 26vh white, 61vw 32vh white, 200vw 104vh white, 150vw 99vh white, 31vw 62vh white, 194vw 175vh white, 140vw 7vh white, 72vw 165vh white, 145vw 142vh white, 2vw 4vh white, 182vw 27vh white, 175vw 198vh white, 119vw 119vh white, 128vw 109vh white, 73vw 115vh white, 39vw 89vh white, 148vw 37vh white, 6vw 148vh white, 122vw 177vh white, 78vw 93vh white, 27vw 105vh white, 62vw 132vh white, 188vw 186vh white, 17vw 66vh white, 7vw 167vh white, 178vw 26vh white, 8vw 18vh white, 72vw 110vh white, 75vw 137vh white, 182vw 57vh white, 58vw 187vh white, 114vw 28vh white, 150vw 92vh white, 5vw 20vh white, 71vw 48vh white, 127vw 38vh white, 53vw 142vh white, 146vw 91vh white, 152vw 19vh white, 67vw 14vh white, 139vw 76vh white, 138vw 79vh white, 103vw 126vh white, 103vw 109vh white, 151vw 163vh white, 55vw 1vh white, 154vw 178vh white, 156vw 31vh white, 129vw 177vh white, 27vw 155vh white, 154vw 58vh white, 152vw 69vh white, 133vw 123vh white, 66vw 79vh white, 83vw 161vh white, 36vw 7vh white, 111vw 52vh white, 135vw 160vh white, 67vw 139vh white, 15vw 20vh white, 33vw 72vh white, 53vw 156vh white, 77vw 34vh white, 187vw 195vh white, 106vw 192vh white, 87vw 59vh white, 95vw 112vh white, 46vw 26vh white, 124vw 180vh white, 78vw 15vh white, 73vw 51vh white, 64vw 112vh white, 136vw 165vh white, 127vw 105vh white, 45vw 154vh white, 34vw 93vh white, 156vw 15vh white, 136vw 59vh white, 188vw 55vh white, 148vw 164vh white, 184vw 125vh white, 20vw 96vh white, 40vw 187vh white, 36vw 19vh white, 191vw 49vh white, 23vw 69vh white, 65vw 125vh white, 50vw 140vh white, 25vw 197vh white, 51vw 180vh white, 117vw 68vh white, 87vw 61vh white, 81vw 117vh white, 83vw 31vh white, 144vw 97vh white, 2vw 164vh white, 62vw 139vh white, 160vw 41vh white, 91vw 174vh white, 148vw 78vh white, 162vw 117vh white, 145vw 73vh white, 115vw 7vh white, 179vw 152vh white, 20vw 56vh white, 20vw 151vh white, 88vw 71vh white, 141vw 16vh white, 29vw 191vh white, 65vw 167vh white, 45vw 57vh white, 134vw 120vh white, 135vw 107vh white, 30vw 195vh white, 92vw 27vh white, 156vw 23vh white, 165vw 148vh white, 126vw 20vh white, 144vw 84vh white, 55vw 155vh white, 143vw 107vh white, 43vw 67vh white, 199vw 192vh white, 79vw 94vh white, 40vw 20vh white, 180vw 177vh white, 165vw 83vh white, 59vw 120vh white, 177vw 157vh white, 2vw 13vh white, 136vw 192vh white, 92vw 131vh white, 59vw 185vh white, 176vw 171vh white, 158vw 118vh white, 169vw 106vh white, 49vw 24vh white, 106vw 64vh white, 126vw 75vh white, 170vw 177vh white, 41vw 117vh white, 63vw 130vh white, 100vw 89vh white, 99vw 130vh white, 96vw 28vh white, 48vw 32vh white, 18vw 192vh white, 15vw 85vh white, 154vw 77vh white, 96vw 36vh white, 31vw 200vh white, 176vw 57vh white, 97vw 85vh white, 87vw 33vh white, 168vw 143vh white, 173vw 171vh white, 65vw 111vh white, 79vw 127vh white, 24vw 143vh white, 104vw 56vh white, 151vw 118vh white, 135vw 123vh white, 54vw 44vh white, 169vw 105vh white, 157vw 93vh white, 124vw 117vh white, 102vw 184vh white, 67vw 184vh white, 49vw 188vh white, 78vw 63vh white, 172vw 162vh white, 27vw 153vh white, 33vw 89vh white, 91vw 123vh white, 153vw 86vh white, 150vw 48vh white, 193vw 154vh white, 108vw 110vh white, 150vw 179vh white, 117vw 95vh white, 164vw 31vh white, 51vw 33vh white, 135vw 1vh white, 177vw 106vh white, 69vw 95vh white, 25vw 169vh white, 140vw 122vh white, 4vw 23vh white, 141vw 57vh white, 198vw 80vh white, 44vw 82vh white, 118vw 140vh white, 120vw 199vh white, 58vw 14vh white, 31vw 46vh white;
+  animation-duration: var(--stars-sm-speed);
+}
+.stars-sm:after {
+  animation-delay: calc(var(--stars-sm-speed) / -2);
+}
+.stars-md {
+  width: 2px;
+  height: 2px;
+}
+.stars-md:before, .stars-md:after {
+  box-shadow: 107vw 7vh white, 34vw 129vh white, 54vw 60vh white, 89vw 108vh white, 53vw 144vh white, 82vw 46vh white, 157vw 45vh white, 137vw 45vh white, 113vw 134vh white, 111vw 167vh white, 49vw 131vh white, 71vw 189vh white, 138vw 32vh white, 145vw 103vh white, 17vw 68vh white, 155vw 53vh white, 146vw 123vh white, 161vw 4vh white, 36vw 128vh white, 7vw 155vh white, 12vw 95vh white, 185vw 152vh white, 75vw 101vh white, 5vw 128vh white, 30vw 73vh white, 179vw 171vh white, 157vw 80vh white, 163vw 145vh white, 136vw 156vh white, 100vw 68vh white, 43vw 110vh white, 122vw 136vh white, 124vw 84vh white, 111vw 103vh white, 23vw 63vh white, 97vw 3vh white, 97vw 132vh white, 12vw 33vh white, 113vw 94vh white, 19vw 136vh white, 77vw 38vh white, 30vw 151vh white, 153vw 179vh white, 110vw 108vh white, 76vw 99vh white, 64vw 171vh white, 191vw 5vh white, 186vw 17vh white, 91vw 19vh white, 65vw 6vh white, 23vw 163vh white, 26vw 149vh white, 166vw 143vh white, 33vw 66vh white, 154vw 113vh white, 181vw 152vh white, 10vw 79vh white, 88vw 183vh white, 70vw 171vh white, 107vw 129vh white, 22vw 122vh white, 181vw 157vh white, 134vw 126vh white, 108vw 104vh white, 148vw 76vh white, 199vw 147vh white, 151vw 1vh white, 98vw 78vh white, 34vw 93vh white, 141vw 19vh white, 181vw 75vh white, 71vw 149vh white, 151vw 199vh white, 80vw 57vh white, 79vw 5vh white, 156vw 144vh white, 100vw 53vh white, 22vw 9vh white, 188vw 105vh white, 187vw 192vh white, 99vw 4vh white, 160vw 128vh white, 142vw 67vh white, 19vw 17vh white, 189vw 110vh white, 16vw 126vh white, 70vw 127vh white, 56vw 18vh white, 183vw 22vh white, 151vw 117vh white, 91vw 37vh white, 125vw 105vh white, 41vw 73vh white, 148vw 131vh white, 14vw 47vh white, 98vw 170vh white, 64vw 138vh white, 47vw 98vh white, 104vw 50vh white, 49vw 105vh white, 80vw 68vh white, 150vw 48vh white, 181vw 195vh white, 106vw 159vh white, 5vw 12vh white, 56vw 26vh white, 27vw 147vh white, 75vw 82vh white, 96vw 136vh white, 191vw 80vh white, 57vw 148vh white, 140vw 124vh white, 171vw 71vh white, 151vw 68vh white, 107vw 178vh white, 121vw 56vh white, 172vw 111vh white, 125vw 118vh white, 64vw 33vh white, 128vw 162vh white, 71vw 167vh white, 19vw 130vh white, 96vw 161vh white, 63vw 116vh white, 151vw 129vh white, 46vw 45vh white, 150vw 71vh white, 200vw 128vh white, 117vw 133vh white, 73vw 37vh white, 22vw 164vh white, 49vw 66vh white, 77vw 35vh white, 57vw 91vh white, 3vw 130vh white, 72vw 18vh white, 95vw 51vh white, 182vw 143vh white, 62vw 164vh white, 79vw 46vh white, 145vw 15vh white, 48vw 198vh white, 58vw 35vh white, 17vw 117vh white, 107vw 45vh white, 67vw 30vh white, 152vw 24vh white, 155vw 57vh white, 134vw 99vh white, 74vw 2vh white, 33vw 29vh white, 10vw 98vh white, 76vw 132vh white, 144vw 30vh white, 164vw 150vh white, 179vw 40vh white, 94vw 19vh white, 172vw 55vh white, 8vw 129vh white, 198vw 28vh white, 65vw 2vh white, 72vw 191vh white, 157vw 129vh white, 167vw 149vh white, 64vw 165vh white, 111vw 146vh white, 55vw 157vh white, 73vw 135vh white, 82vw 169vh white, 98vw 136vh white, 38vw 185vh white, 154vw 150vh white, 124vw 131vh white, 179vw 4vh white, 134vw 55vh white, 182vw 62vh white, 58vw 112vh white, 99vw 135vh white, 126vw 24vh white, 3vw 85vh white, 42vw 121vh white, 153vw 46vh white, 186vw 122vh white, 30vw 13vh white, 200vw 102vh white, 1vw 140vh white, 153vw 115vh white, 32vw 155vh white, 91vw 158vh white, 105vw 193vh white, 83vw 15vh white, 147vw 74vh white, 127vw 4vh white, 62vw 84vh white, 29vw 183vh white, 2vw 22vh white, 178vw 193vh white, 38vw 178vh white, 127vw 135vh white, 92vw 194vh white;
+  animation-duration: var(--stars-md-speed);
+}
+.stars-md:after {
+  animation-delay: calc(var(--stars-md-speed) / -2);
+}
+.stars-lg {
+  width: 4px;
+  height: 4px;
+}
+.stars-lg:before, .stars-lg:after {
+  box-shadow: 193vw 104vh white, 58vw 20vh white, 72vw 161vh white, 22vw 30vh white, 90vw 19vh white, 195vw 20vh white, 168vw 46vh white, 182vw 161vh white, 40vw 79vh white, 124vw 24vh white, 36vw 165vh white, 25vw 133vh white, 171vw 23vh white, 184vw 183vh white, 107vw 16vh white, 65vw 39vh white, 151vw 174vh white, 74vw 164vh white, 88vw 189vh white, 191vw 93vh white, 51vw 103vh white, 24vw 173vh white, 122vw 193vh white, 25vw 105vh white, 137vw 49vh white, 6vw 120vh white, 23vw 141vh white, 66vw 40vh white, 153vw 152vh white, 178vw 41vh white, 159vw 163vh white, 21vw 125vh white, 183vw 61vh white, 168vw 148vh white, 26vw 161vh white, 186vw 68vh white, 94vw 191vh white, 127vw 5vh white, 195vw 61vh white, 124vw 148vh white, 95vw 44vh white, 200vw 200vh white, 153vw 17vh white, 91vw 112vh white, 133vw 167vh white, 79vw 158vh white, 125vw 145vh white, 162vw 99vh white, 167vw 104vh white, 165vw 111vh white;
+  animation-duration: var(--stars-lg-speed);
+}
+.stars-lg:after {
+  animation-delay: calc(var(--stars-lg-speed) / -2);
+}
+
+@keyframes stars {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+@keyframes exhaust {
+  to {
+    transform: scaleX(0.98) translateY(-1vmin);
+  }
+}
+@keyframes speed-up-exhaust {
+  from {
+    transform: scale(0.98, 1);
+  }
+  to {
+    transform: scale(0.96, 1.5);
+  }
+}
+@keyframes speed-up-ship {
+  from {
+    transform: translateY(-5%);
+  }
+  to {
+    transform: translateY(-3%);
+  }
+}
+
+
+/*Navbar height ends here*/
+
+
+    </style>
+  
+  </head>
+  <body>
+
+
+
+<!-- <div class="d-block d-sm-none"> -->
+
+
+
+
+<!-- Navbar Bottom -->
+<nav class="navbar fixed-bottom navbar-light noselect border-top" style="background-color: white;">
+  <table align="center">
+    <tr>
+      <td style="width: 350px; text-align: center; font-size: 18px">hello <span style="font-family: Pacifico; ">aafreen</span>,</td>
+    </tr>
+    <tr>
+
+      <td style="width: 350px; text-align: center; font-size: 15px;">
+      <div style="padding-top: 10px;">      
+      Happy Birthday Girl! Just like this rocket exploring the outer space, I wish you move forward, upward and onward in life.
+    </div>
+    </td>
+    </tr>    
+    <tr>
+      <td style="width: 350px; text-align: center">
+        <div style="padding-top: 10px;">
+          <span style="font-weight: 700">
+        Let's traverse the world of Aafreen!<br>
+          </span>
+          <a href="index 2.html">
+        <button type="button" class="btn btn-dark btn-sm" style="margin-top: 10px;">EXPLORE NOW</button>
+          </a>
+        </div>
+      </td>
+    </tr>        
+  </table>
+
+</nav>
+<!-- Navbar Top Ends Here -->
+
+<!-- Rocket Animation -->
+
+
+<div class="star-field">
+  <div class="stars stars-sm"></div>
+</div>
+<div class="ship">
+  <div class="wrapper">
+    <div class="body side left"></div>
+    <div class="body main">
+      <div class="wing left"></div>
+      <div class="wing right"></div>
+      <div class="booster"></div>
+      <div class="exhaust"></div>
+    </div>
+    <div class="body side right"></div>
+  </div>
+</div>
+  
+
+
+<!-- Rocket Animation Ends Here -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="anchal v2.js" type="text/javascript"></script>
+  </body>
+</html>
